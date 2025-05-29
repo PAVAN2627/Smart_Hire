@@ -11,14 +11,100 @@ import re
 from rapidfuzz import fuzz
 from streamlit_tags import st_tags
 SKILL_EQUIVALENCE = {
+    # SQL databases
     "mysql": "sql",
     "oracle": "sql",
     "postgresql": "sql",
     "mariadb": "sql",
     "sql server": "sql",
+    "sqlite": "sql",
     "sql": "sql",
-    # Add more if needed
+
+    # NoSQL databases
+    "mongodb": "nosql",
+    "cassandra": "nosql",
+    "dynamodb": "nosql",
+    "couchdb": "nosql",
+    "redis": "nosql",
+    "elasticsearch": "nosql",
+
+    # Programming languages
+    "python": "python",
+    "java": "java",
+    "javascript": "javascript",
+    "js": "javascript",
+    "typescript": "javascript",
+    "nodejs": "javascript",
+    "c": "c/c++",
+    "c++": "c/c++",
+    "golang": "go",
+    "go": "go",
+    "ruby": "ruby",
+    "kotlin": "kotlin",
+    "swift": "swift",
+    "php": "php",
+
+    # Web development
+    "html": "frontend",
+    "css": "frontend",
+    "scss": "frontend",
+    "bootstrap": "frontend",
+    "tailwind": "frontend",
+    "react": "frontend",
+    "react.js": "frontend",
+    "vue": "frontend",
+    "vue.js": "frontend",
+    "angular": "frontend",
+
+    # Backend frameworks
+    "django": "backend",
+    "flask": "backend",
+    "express": "backend",
+    "spring": "backend",
+    "laravel": "backend",
+    "fastapi": "backend",
+
+    # Cloud platforms
+    "aws": "cloud",
+    "azure": "cloud",
+    "gcp": "cloud",
+    "google cloud": "cloud",
+    "google cloud platform": "cloud",
+    "heroku": "cloud",
+    "vercel": "cloud",
+    "netlify": "cloud",
+
+    # DevOps / CI/CD
+    "docker": "devops",
+    "kubernetes": "devops",
+    "jenkins": "devops",
+    "github actions": "devops",
+    "ansible": "devops",
+    "terraform": "devops",
+
+    # Data & ML
+    "pandas": "data",
+    "numpy": "data",
+    "matplotlib": "data",
+    "seaborn": "data",
+    "scikit-learn": "ml",
+    "sklearn": "ml",
+    "tensorflow": "ml",
+    "keras": "ml",
+    "pytorch": "ml",
+    "openai": "ml",
+    "llm": "ml",
+
+    # Tools
+    "git": "tools",
+    "github": "tools",
+    "bitbucket": "tools",
+    "jira": "tools",
+    "postman": "tools",
+    "figma": "tools",
+    "notion": "tools",
 }
+
 
 def normalize_skill(skill):
     skill = skill.lower().strip()
