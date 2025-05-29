@@ -75,11 +75,13 @@ python -m spacy download en_core_web_md
 ✅ Start Flask App (Jobseeker)
 
 python flask_backend.py
+
 Visit: http://localhost:5000
 
 ## Start Streamlit App (HR)
 
 python -m streamlit run app.py
+
 Visit: Streamlit automatically opens in your browser.
 
 ### How It Works
