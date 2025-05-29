@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply for Jobs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #e0f7fa, #f4f7fb);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            animation: fadeIn 1s ease-in-out;
+        }
+    
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    
+        h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #004d99;
+            animation: fadeIn 1s ease-in-out;
+        }
+    
+        .job-card {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            background: #ffffff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeSlide 0.8s ease-in-out;
+        }
+    
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+    
+        .job-card h5 {
+            font-size: 24px;
+            color: #0066cc;
+        }
+    
+        .job-card p {
+            font-size: 16px;
+            color: #333;
+        }
+    
+        .apply-form {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+    
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+    
+        .btn-primary {
+            background-color: #0066cc;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+    
+        .btn-primary:hover {
+            background-color: #005bb5;
+            transform: scale(1.05);
+        }
+    
+        .footer {
+            background: #1c1c1c;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+    
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+    
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    
+        .container {
+            max-width: 950px;
+            margin: auto;
+        }
+    
+        .hidden {
+            display: none;
+        }
+    </style>
+    
+</head>
+<body>
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">🚀 Apply for Open Positions</h2>
+
+    <!-- Job Listings -->
+    <div id="jobs-container">
+        {% for role, desc in jobs.items() %}
+        <div class="job-card" id="job-card-{{ loop.index }}">
+            <h5>🔹 {{ role }}</h5>
+            <p><strong>📍 Location:</strong> {{ desc.get('location', 'Not specified') }}</p>
+            <p><strong>✅ Eligibility:</strong> {{ desc.get('eligibility', 'Not mentioned') }}</p>
+            <p><strong>📝 Description:</strong> {{ desc.get('description', '') }}</p>
+            <div class="text-center mt-3">
+                <button class="btn btn-primary" onclick="showForm('{{ role }}', {{ loop.index }})">Apply</button>
+            </div>
+            
+
+            <!-- Hidden form per job -->
+            <form action="/apply" method="POST" enctype="multipart/form-data" class="apply-form" id="form-{{ loop.index }}">
+                <input type="hidden" name="job_roles" value="{{ role }}">
+                <div class="mb-3">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Upload Resume (PDF only) *</label>
+                    <input type="file" name="resume" class="form-control" accept=".pdf" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">📤 Submit Application</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>© 2025 AI-Powered Resume Screening | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+</div>
+
+<script>
+    function showForm(role, index) {
+        // Hide all other forms
+        const allForms = document.querySelectorAll('.apply-form');
+        allForms.forEach(f => f.style.display = 'none');
+
+        // Show selected form
+        const form = document.getElementById('form-' + index);
+        form.style.display = 'block';
+
+        // Scroll to form
+        form.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "Python Developer": {
+        "description": "Build scalable Python applications with Django.",
+        "location": "Remote",
+        "eligibility": "B.Tech/MCA with 0-2 years experience"
+    },
+    "Frontend Developer": {
+        "description": "Develop UI using React and Tailwind CSS.",
+        "location": "Bangalore",
+        "Eligibility": "B.E./B.Tech with strong frontend skills"
+    },
+    "Java Developer": {
+        "description": "Java must needed",
+        "location": "Pune",
+        "eligibility": "B.E"
+    }
+}
