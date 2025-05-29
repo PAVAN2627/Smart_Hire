@@ -26,7 +26,7 @@ Smart Hire is an AI-powered system that automates resume screening and job match
 
 ### 🔹 Jobseeker Portal (Flask)
 
-> 📷 *Add screenshot of job listing page here*
+
 
 ![op3](https://github.com/user-attachments/assets/149bca56-28b3-4365-86ce-e06b45ba86a9)
 
